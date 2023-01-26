@@ -1,0 +1,100 @@
+
+
+<div class="nk-app-root">
+    <!-- main @s -->
+    <div class="nk-main ">
+        <!-- sidebar @s -->
+        <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
+            <div class="nk-sidebar-element nk-sidebar-head">
+                
+                <div class="nk-menu-trigger me-n2">
+                    <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+                </div>
+            </div><!-- .nk-sidebar-element -->
+            <div class="nk-sidebar-element">
+                <div class="nk-sidebar-body" data-simplebar>
+                    <div class="nk-sidebar-content">
+                        <div class="nk-sidebar-menu">
+                            <!-- Menu -->
+                            <ul class="nk-menu">
+                                <li class="nk-menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                    <a routerLink="donors" class="nk-menu-link">
+                                        <span class="nk-menu-text">All The Donors</span>
+                                    </a>
+                                </li>
+                                <li class="nk-menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                    <a routerLink="add" class="nk-menu-link">
+                                        <span class="nk-menu-text">Add New Donor</span>
+                                    </a>
+                                </li>
+                            </ul><!-- .nk-menu -->
+                        </div><!-- .nk-sidebar-menu -->
+                    </div><!-- .nk-sidebar-content -->
+                </div><!-- .nk-sidebar-body -->
+            </div><!-- .nk-sidebar-element -->
+        </div>
+        <!-- sidebar @e -->
+        <!-- wrap @s -->
+        <div class="nk-wrap ">
+            <!-- main header @s -->
+            <div class="nk-header nk-header-fluid nk-header-fixed is-light">
+                <div class="container-fluid">
+                    <div class="nk-header-wrap">
+                        <div class="nk-menu-trigger d-xl-none ms-n1">
+                            <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+                        </div>
+                        
+                        <div class="nk-header-tools"  *ngIf="authService.userData as user">
+                            <ul class="nk-quick-nav">
+                                <li class="dropdown user-dropdown">
+                                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                        <div class="user-toggle">
+                                            <div class="user-avatar sm">
+                                                <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="user">
+                                            </div>
+                                            <div class="user-info d-none d-md-block">
+                                                <div class="user-name dropdown-indicator">{{(user.displayName) ? user.displayName : 'User'}}</div>
+                                                <div class="user-status">{{user.email}}</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1">
+                                        <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                                            <div class="user-card">
+                                                <div class="user-avatar">
+                                                    <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="user">
+                                                </div>
+                                                <div class="user-info">
+                                                    <span class="lead-text">{{user.name}}</span>
+                                                    <span class="sub-text">{{user.email}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-inner">
+                                            <ul class="link-list">
+                                                <li><a (click)="authService.SignOut()" style="cursor: pointer;"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- main header @e -->
+            <!-- content @s -->
+            <div class="nk-content nk-content-fluid">
+                <div class="container-xl wide-lg">
+                    <div class="nk-content-body">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
+            <!-- content @e -->
+        </div>
+        <!-- wrap @e -->
+    </div>
+    <!-- main @e -->
+</div>
+<!-- app-root @e -->

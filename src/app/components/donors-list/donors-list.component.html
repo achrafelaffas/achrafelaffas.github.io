@@ -1,0 +1,75 @@
+  <div class="nk-block">
+    <div class="card card-bordered h-100">
+        <div class="card-inner border-bottom">
+            <div class="card-title-group">
+                <div class="card-title">
+                    <h6 class="title">Doners list</h6>
+                </div>
+                <div class="card-tools">
+                    <input type="text" id="myInput"  class="form-control" onkeyup="myFunction()" placeholder="Search for names..">
+                </div>
+            </div>
+        </div>
+        <div class="card-inner p-0">
+            <table class="table table-bordered"  id="myTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Number</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Blood type</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let donor of donors; let i = index">
+                    <th>{{i+1}}</th>
+                    <td>{{ donor.fname }}</td>
+                    <td>{{ donor.lname }}</td>
+                    <td>{{ donor.age }}</td>
+                    <td>{{ donor.bloodType }}</td>
+                    <td>{{ donor.phone }}</td>
+                    <td>
+                        <li><a class="pointer" (click)="setActiveDonor(donor, i)" data-bs-toggle="modal" data-bs-target="#modalDefault">View</a></li>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div><!-- .card-inner -->
+    </div><!-- .card -->
+  </div><!-- .nk-block -->
+
+
+
+
+
+
+
+
+<!-- Modal Content Code -->
+<div class="modal fade" tabindex="-1" id="modalDefault">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="/dashboard/donors" class="close" #myModalClose data-dismiss="modal" aria-label="Close">
+                <em class="icon ni ni-cross"></em>
+            </a>
+            <div class="modal-header">
+                <h5 class="modal-title">Modal Title</h5>
+            </div>
+            <div class="modal-body">
+                  <div *ngIf="currentDonor">
+                    <app-donor-details (refreshList)="refreshList()" [donor]="currentDonor"></app-donor-details>
+                  </div>
+                  <div *ngIf="!currentDonor">
+                  </div>           
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

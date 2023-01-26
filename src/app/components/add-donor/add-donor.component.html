@@ -1,0 +1,109 @@
+<div class="nk-block nk-block-lg">
+  <div class="card card-bordered card-preview">
+      <div class="card-inner">
+        <div class="nk-block-head-content">
+          <h5 class="nk-block-title">Add new Donor</h5>
+        </div><br>
+        <div class="submit-form">
+          <form  #login="ngForm" (ngSubmit)="saveDonor(login)" > 
+            <div>
+
+              <div class="form-group">
+                <label for="fname">First name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fname"
+                  required
+                  [(ngModel)]="donor.fname"
+                  name="fname"
+                  placeholder="Enter the first name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="lname">Last name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lname"
+                  required
+                  [(ngModel)]="donor.lname"
+                  name="lname"
+                  placeholder="Enter the last name"
+                />
+              </div>
+          
+              <div class="form-group">
+                <label for="age">Age</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="age"
+                  required
+                  [(ngModel)]="donor.age"
+                  name="age"
+                  placeholder="Enter the age of the donor"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phnoe</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
+                  required
+                  [(ngModel)]="donor.phone"
+                  name="phone"
+
+                  placeholder="Enter the phone number "
+                />
+              </div>
+
+
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  required
+                  [(ngModel)]="donor.address"
+                  name="address"
+                  placeholder="Enter the address of the donor"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Blood type</label>
+                <div class="form-control-wrap">
+                    <select class="form-select js-select2" name="bloodType" [(ngModel)]="donor.bloodType" >
+
+                      <option *ngFor="let bloodtype of bloodtypes" [ngValue]="bloodtype.value"> 
+                        {{bloodtype.name}}
+                      </option>
+
+                    </select>
+                </div>
+              </div>
+
+              <!-- GENDERS -->
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" [(ngModel)]="donor.sexe" id="female" name="sexe" value="female">
+                <label class="custom-control-label" for="female">Female</label>
+              </div><br><br>
+
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" [(ngModel)]="donor.sexe" id="male" name="sexe" value="male">
+                <label class="custom-control-label" for="male">male</label>
+              </div><br><br>
+              <!-- GENDERS -->
+              
+
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </form>
+          </div>
+  </div><!-- .card-preview -->
+</div> <!-- nk-block -->
