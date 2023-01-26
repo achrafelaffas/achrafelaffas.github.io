@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import Donor from 'src/app/models/donor.model';
 import { DonorService } from 'src/app/services/donor.service';
 import Swal from 'sweetalert2';
@@ -10,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class DonorDetailsComponent {
 
+  router!: Router;
   @Input() donor?: Donor;
   @Output() refreshList: EventEmitter<any> = new EventEmitter();
   
@@ -103,6 +105,7 @@ export class DonorDetailsComponent {
           this.donorService.delete(this.currentDonor.key)
             .then(() => {
               this.refreshList.emit();
+              this.router.navigate(['dashboard/donors']);
             })
             .catch(err => console.log(err));
         }
