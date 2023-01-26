@@ -17,10 +17,6 @@
                     <th scope="col">Number</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Blood type</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -28,9 +24,6 @@
                     <th>{{i+1}}</th>
                     <td>{{ donor.fname }}</td>
                     <td>{{ donor.lname }}</td>
-                    <td>{{ donor.age }}</td>
-                    <td>{{ donor.bloodType }}</td>
-                    <td>{{ donor.phone }}</td>
                     <td>
                         <li><a class="pointer" (click)="setActiveDonor(donor, i)" data-bs-toggle="modal" data-bs-target="#modalDefault">View</a></li>
                     </td>
@@ -38,6 +31,7 @@
                 </tbody>
               </table>
         </div><!-- .card-inner -->
+
     </div><!-- .card -->
   </div><!-- .nk-block -->
 
