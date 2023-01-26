@@ -75,8 +75,6 @@ export class DonorDetailsComponent {
       sexe: this.currentDonor.sexe
 
     };
-    
-    console.log(data);
 
     if (this.currentDonor.key) {
       this.donorService.update(this.currentDonor.key, data)

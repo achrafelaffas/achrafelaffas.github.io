@@ -34,7 +34,7 @@ export class DonorsListComponent implements OnInit {
     this.currentDonor = undefined;
     this.currentIndex = -1;
     this.retrieveDonors();
-    this.modalClose.nativeElement.click();
+    
   }
 
 
