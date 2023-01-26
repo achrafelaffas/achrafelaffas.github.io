@@ -2,6 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { User } from '../services/user';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import Swal from 'sweetalert2';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
@@ -44,7 +45,7 @@ export class AuthService {
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        Swal.fire('What is wrong with u?',error.message.split(':').pop().split('(')[0]);
       });
   }
   // Sign up with email/password
@@ -58,7 +59,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        Swal.fire('Error',error.message.split(':').pop().split('(')[0]);
       });
   }
   // Send email verfificaiton when new user sign up
@@ -74,10 +75,10 @@ export class AuthService {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        Swal.fire('Info','Password reset email sent, check your inbox.')
       })
       .catch((error) => {
-        window.alert(error);
+        Swal.fire('Error',error.message.split(':').pop().split('(')[0]);
       });
   }
   // Returns true when user is looged in and email is verified
@@ -100,7 +101,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error);
+        Swal.fire('Error',error.message.split(':').pop().split('(')[0]);
       });
   }
   /* Setting up user data when sign in with username/password, 
