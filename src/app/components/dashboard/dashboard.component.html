@@ -38,8 +38,8 @@
                     <div class="nk-header-wrap">
                         <div class="nk-header-tools"  *ngIf="authService.userData as user">
                             <ul class="nk-quick-nav">
-                                <a routerLink="add" class="btn btn-outline-primary">add new donor</a>
-                                <a routerLink="donors" class="btn btn-outline-primary mx-2">donors lista</a>
+                                <a routerLink="add" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >add new donor</a>
+                                <a routerLink="donors" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >donors lista</a>
                                 <li class="dropdown user-dropdown">
                                     <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                         <div class="user-toggle">
