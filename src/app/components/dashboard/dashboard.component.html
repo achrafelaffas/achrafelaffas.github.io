@@ -39,12 +39,12 @@
                     <div class="nk-header-wrap">
                         <div class="nk-header-tools"  *ngIf="authService.userData as user">
                             <ul class="nk-quick-nav">
-                                <li class="nk-menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <li class="nk-menu-item d-xl-none" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                     <a routerLink="donors" class="nk-menu-link">
-                                        <span class="nk-menu-text">All Donors</span>
+                                        <span class="nk-menu-text ">All Donors</span>
                                     </a>
                                 </li>
-                                <li class="nk-menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <li class="nk-menu-item d-xl-none" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                     <a routerLink="add" class="nk-menu-link">
                                         <span class="nk-menu-text">Add New Donor</span>
                                     </a>
@@ -68,13 +68,24 @@
                                                     <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="user">
                                                 </div>
                                                 <div class="user-info">
-                                                    <span class="lead-text">{{user.name}}</span>
+                                                    <span class="lead-text">{{(user.displayName) ? user.displayName : 'User'}}</span>
                                                     <span class="sub-text">{{user.email}}</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="dropdown-inner">
                                             <ul class="link-list">
+                                               <li>
+                                                <div class="user-card d-md-none">
+                                                    <div class="user-avatar">
+                                                        <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="user">
+                                                    </div>
+                                                    <div class="user-info">
+                                                        <span class="lead-text">{{(user.displayName) ? user.displayName : 'User'}}</span>
+                                                        <span class="sub-text">{{user.email}}</span>
+                                                    </div>
+                                                </div>
+                                               </li>
                                                 <li><a (click)="authService.SignOut()" style="cursor: pointer;"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
                                             </ul>
                                         </div>
