@@ -7,4 +7,5 @@ export default class Donor {
     phone?:number
     address?: string
     sexe?: string
+    userId?:string
 }

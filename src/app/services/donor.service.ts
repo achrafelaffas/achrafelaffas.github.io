@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { getAuth } from 'firebase/auth';
 import Donor from '../models/donor.model';
 
 @Injectable({
@@ -12,8 +13,12 @@ export class DonorService {
 
   donorsRef!: AngularFireList<Donor>;
 
+  uid: any;
+
+
   constructor(private db: AngularFireDatabase) {
-    this.donorsRef = db.list(this.dbPath);
+    this.uid = localStorage.getItem('uid');    
+    this.donorsRef = db.list(this.dbPath,ref => {return ref.orderByChild('userId').equalTo(this.uid)});
   }
 
   getAll(): AngularFireList<Donor> {

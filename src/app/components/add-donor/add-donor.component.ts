@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { getAuth } from 'firebase/auth';
 
 import Donor from 'src/app/models/donor.model';
 import { DonorService } from 'src/app/services/donor.service';
 import Swal from 'sweetalert2';
+
+
 
 @Component({
   selector: 'app-add-donor',
@@ -14,6 +17,8 @@ export class AddDonorComponent {
 
   donor: Donor = new Donor();
   submitted = false;
+
+  user = getAuth();
 
   bloodtypes = [
     {value: "A+", name: "A RhD positive (A+)"},
@@ -33,10 +38,8 @@ export class AddDonorComponent {
 
 
   saveDonor(login :NgForm): void {
-
-    console.log(this.donor)
+    this.donor.userId = this.user.currentUser?.uid;
     this.donorService.create(this.donor).then(() =>{
-      console.log("donor submited successfully");
       Swal.fire('Done','saved with success','success');
       login.reset();
     })
