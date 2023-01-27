@@ -64,11 +64,13 @@ export class AuthService {
   }
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
+    Swal.fire('email sent','','success');
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
         this.router.navigate(['verify-email-address']);
       });
+
   }
   // Reset Forggot password
   ForgotPassword(passwordResetEmail: string) {

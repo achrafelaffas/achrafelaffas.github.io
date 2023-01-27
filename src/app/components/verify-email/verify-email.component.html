@@ -1,22 +1,15 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Thank You for Registering</h3>
-        <div class="formGroup" *ngIf="authService.userData as user">
-          <p class="text-center">We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
-          <p class="text-center">Please check your email and click on the link to verfiy your email address.</p>
-        </div>
+
+<div class="nk-block nk-block-middle mt-5 nk-auth-body">
+<div class="nk-block-head-content">
+    <h4 class="nk-block-title text-success">Thank You for Registering</h4>
+    <div class="nk-block-des text-success" *ngIf="authService.userData as user">
+        <p>We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
+        <p>Please check your email and click on the link to verfiy your email address.</p>
+        <button type="button" class="btn btn-primary" (click)="authService.SendVerificationMail()">
+          Resend Verification Email
+        </button><br><br>
+        <span>Go back to?<a routerLink="/sign-in"> Sign in</a></span>
         
-        <!-- Calling SendVerificationMail() method using authService Api -->
-        <div class="formGroup">
-          <button type="button" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
-            <i class="fas fa-redo-alt"></i>
-            Resend Verification Email
-          </button>
-        </div>
-      </div>
-      <div class="redirectToLogin">
-        <span>Go back to?<span class="redirect" routerLink="/sign-in"> Sign in</span></span>
-      </div>
     </div>
-  </div>
+</div>
+</div>
