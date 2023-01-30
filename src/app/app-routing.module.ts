@@ -6,6 +6,7 @@ import { DonorsListComponent } from './components/donors-list/donors-list.compon
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'dashboard', component: DashboardComponent,  canActivate: [AuthGuard], 
     children :[
+      { path: 'statistics', component: StatisticsComponent},
       { path: 'donors', component: DonorsListComponent},
       { path: 'add', component: AddDonorComponent },
     ]

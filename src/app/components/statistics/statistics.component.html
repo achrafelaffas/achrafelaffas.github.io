@@ -1,0 +1,79 @@
+<div class="nk-block">
+    <div class="row gy-gs">
+        <div class="col-md-3 col-xxl-2">
+            <div class="card card-bordered h-100">
+                <div class="card-inner pb-0">
+                    <div class="card-title-group pt-1">
+                        <div class="card-title">
+                            <h6 class="title">Donors by Gender</h6>
+                        </div>
+                
+                    </div>
+                </div>
+                <div class="card-inner pt-0">
+                    <div class="invest-ov gy-1">
+                        <div class="subtitle">Donors</div>
+                        <div class="invest-ov-details">
+                            <div class="invest-ov-stats">
+                                <div><h2 class=" d-flex align-items-end text-primary">{{donors.length}}</h2></div>
+                                <div class="title">Total</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invest-ov gy-1">
+                        <div class="subtitle">By Gender</div>
+                        <div class="invest-ov-details">
+                            <div class="invest-ov-info">
+                                <div><h3 class=" text-success">{{WomenDonors.length}}</h3></div>
+                                <div class="title">Women</div>
+                            </div>
+                            <div class="invest-ov-info">
+                                <div><h3 class=" text-warning">{{MenDonors.length}}</h3></div>
+                                <div class="title">Men</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invest-ov">
+                        <div class="subtitle">Donors by %</div>
+                        
+                        
+                        <div class="progress">
+                            <div
+                              class="progress-bar bg-warning progress-bar-striped"
+                              role="progressbar"
+                              [style.width.%]="MPP"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+            
+                            <div
+                              class="progress-bar bg-success progress-bar-striped"
+                              role="progressbar"
+                              [style.width.%]="WPP"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                    </div>
+                </div>
+            </div><!-- .card -->
+        </div><!-- .col -->
+        <div class="col-md-9 col-xxl-6">
+            <div class="card card-bordered h-100">
+                <div class="card-inner border-bottom">
+                    <div class="card-title-group">
+                        <div class="card-title">
+                            <h6 class="title">Donors By Blood Types</h6>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="card-inner p-0">
+                    <div class="m-3">
+                        <canvas  id="MyChart" >{{ chart }}</canvas>
+                  </div>
+                </div><!-- .card-inner -->
+            </div><!-- .card -->
+        </div><!-- .col -->
+    </div><!-- .row -->
+</div><!-- .nk-block -->

@@ -22,6 +22,7 @@
     "@popperjs/core": "^2.11.6",
     "@schematics/angular": "^9.1.13",
     "angular-datatables": "^15.0.0",
+    "chart.js": "^4.2.0",
     "datatables.net": "^1.11.3",
     "datatables.net-dt": "^1.11.3",
     "firebase": "^9.16.0",
