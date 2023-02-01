@@ -42,7 +42,8 @@ export class DonorDetailsComponent {
     {value: "B-", name: "B RhD negative (B-)"},
     {value: "O+", name: "O RhD positive (O+)"},
     {value: "O-", name: "O RhD negative (O-)"},
-    {value: "AB+", name: "AB RhD positive (AB+)"}
+    {value: "AB+", name: "AB RhD positive (AB+)"},
+    {value: "AB-", name: "AB RhD negative (AB-)"}
   ]
 
 

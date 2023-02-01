@@ -14,7 +14,7 @@ import { DonorsListComponent } from './components/donors-list/donors-list.compon
 import { FormsModule } from '@angular/forms';
 import { DonorDetailsComponent } from './components/donor-details/donor-details.component';
 
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -48,7 +48,8 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     FormsModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ReactiveFormsModule
 
   ],
   providers: [AuthService],

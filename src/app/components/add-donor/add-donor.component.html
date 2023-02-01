@@ -5,60 +5,87 @@
           <h5 class="nk-block-title">Add new Donor</h5>
         </div><br>
         <div class="submit-form">
-          <form  #login="ngForm" (ngSubmit)="saveDonor(login)" > 
-            <div>
-
+        
+          <form  #login="ngForm" [formGroup]="addForm" (ngSubmit)="saveDonor(login)" novalidate> 
+            <div class="row gy-gs">
+              <div class="col-12 col-lg-6">
               <div class="form-group">
                 <label for="fname">First name</label>
                 <input
                   type="text"
-                  class="form-control"
                   id="fname"
+                  class="form-control"
+                  minlength="3"
+                  pattern="[a-zA-Z]+$"
                   required
                   [(ngModel)]="donor.fname"
-                  name="fname"
+                  formControlName="fname"
                   placeholder="Enter the first name"
-                />
+                /> 
+                <div *ngIf="fn.fname.touched && ln.fname.invalid" class="text-danger">
+                  <div *ngIf="fn.fname.errors?.required">Please enter your first name</div>
+                  <div *ngIf="fn.fname.errors?.pattern">Your first name has special caracters</div>
+                  <div *ngIf="fn.fname.errors?.minlength">Your first should be 3 caracters long</div>
+                </div>
               </div>
 
               <div class="form-group">
                 <label for="lname">Last name</label>
                 <input
                   type="text"
-                  class="form-control"
                   id="lname"
+                  class="form-control"
                   required
                   [(ngModel)]="donor.lname"
-                  name="lname"
+                  formControlName="lname"
                   placeholder="Enter the last name"
                 />
+                <div *ngIf="ln.lname.touched && ln.lname.invalid" class="text-danger">
+                  <div *ngIf="ln.lname.errors?.required">Please enter your last name</div>
+                  <div *ngIf="ln.lname.errors?.pattern">Your last name should not have special caracters</div>
+                  <div *ngIf="ln.lname.errors?.minlength">Your last name should be 3 caracters</div>
+                </div>
               </div>
           
               <div class="form-group">
                 <label for="age">Age</label>
                 <input
                   type="text"
-                  class="form-control"
                   id="age"
                   required
+                  class="form-control"
                   [(ngModel)]="donor.age"
+                  formControlName="age"
                   name="age"
                   placeholder="Enter the age of the donor"
                 />
+                  <div *ngIf="agee.age.touched && agee.age.invalid" class="text-danger">
+                    <div *ngIf="age!.errors?.required" >Please enter your age</div>
+                    <div *ngIf="age!.errors?.age" >your age should be 18 &#60; age &#60; 60 </div>
+                  </div>
               </div>
-
+            </div>
+            <div class="col-12 col-lg-6">
               <div class="form-group">
-                <label for="phone">Phnoe</label>
+                <label for="phone">Phone</label>
                 <input
                   type="text"
-                  class="form-control"
                   id="phone"
+                  class="form-control"
                   required
+                  pattern="^((\\+212-?)|0)?[0-9]{10}$"
                   [(ngModel)]="donor.phone"
-                  name="phone"
-
-                  placeholder="Enter the phone number "
+                  
+                  maxlength="10"
+                  minlength="10"
+                  formControlName="phone"
+                  
+                  placeholder="Ex: 0612345678 or 0712345678"
                 />
+                <div *ngIf="phone.phone.touched && phone.phone.invalid" class="text-danger">
+                  <div *ngIf="phone.phone.errors?.required">Please enter your phone</div>
+                  <div *ngIf="phone.phone.errors?.pattern">Your phone should have 10 digits</div>
+                </div>
               </div>
 
 
@@ -66,44 +93,48 @@
                 <label for="address">Address</label>
                 <input
                   type="text"
-                  class="form-control"
                   id="address"
+                  class="form-control"
                   required
                   [(ngModel)]="donor.address"
-                  name="address"
+                  [ngModelOptions]="{standalone: true}"
                   placeholder="Enter the address of the donor"
                 />
               </div>
 
               <div class="form-group">
-                <label class="form-label">Blood type</label>
+                <label for="bloodType">Blood type</label>
                 <div class="form-control-wrap">
-                    <select class="form-select js-select2" name="bloodType" [(ngModel)]="donor.bloodType" >
-
+                    <select class="form-select js-select2" [ngModelOptions]="{standalone: true}"   [(ngModel)]="donor.bloodType" required>
                       <option *ngFor="let bloodtype of bloodtypes" [ngValue]="bloodtype.value"> 
                         {{bloodtype.name}}
                       </option>
-
                     </select>
                 </div>
               </div>
 
               <!-- GENDERS -->
+              <div class="form-group">
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" [(ngModel)]="donor.sexe" id="female" name="sexe" value="female">
+                <input type="radio" class="custom-control-input" [(ngModel)]="donor.sexe" id="female"  formControlName="sexe" name="sexe" value="female" required>
                 <label class="custom-control-label" for="female">Female</label>
-              </div><br><br>
+              </div>
 
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" [(ngModel)]="donor.sexe" id="male" name="sexe" value="male">
+              <div class="custom-control custom-radio mx-3">
+                <input type="radio" class="custom-control-input" [(ngModel)]="donor.sexe" id="male" formControlName="sexe" name="sexe" value="male" required>
                 <label class="custom-control-label" for="male">male</label>
               </div><br><br>
+              </div>
               <!-- GENDERS -->
-              
 
-              <button type="submit" class="btn btn-success">Submit</button>
+              <div *ngIf="sexe.sexe.touched && sexe.sexe.invalid" class="text-danger">
+                <div *ngIf="sexe.sexe.errors?.required">Please select your gender</div>
+              </div>
+              
             </div>
-          </form>
           </div>
+          <input type="submit" [disabled]="addForm.invalid" value="Submit" class="btn btn-success">
+          </form>
+        </div>
   </div><!-- .card-preview -->
 </div> <!-- nk-block -->
